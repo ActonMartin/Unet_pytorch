@@ -1,32 +1,35 @@
 {
     "name": "Mnist_LeNet",
-    "n_gpu": 1,
+    "n_gpu": 0,
 
     "arch": {
-        "type": "MnistModel",
-        "args": {}
+        "type": "UNet",
+        "args": {
+            "n_channels":1,
+            "n_classes": 1
+        }
     },
     "data_loader": {
-        "type": "MnistDataLoader",
+        "type": "ISBIDataLoader",
         "args":{
-            "data_dir": "data/",
-            "batch_size": 128,
+            "data_dir": "data/own/train/",
+            "batch_size": 2,
             "shuffle": true,
             "validation_split": 0.1,
-            "num_workers": 2
+            "num_workers": 0
         }
     },
     "optimizer": {
-        "type": "Adam",
+        "type": "RMSprop",
         "args":{
             "lr": 0.001,
             "weight_decay": 0,
-            "amsgrad": true
+            "momentum": 0.9
         }
     },
-    "loss": "nll_loss",
+    "loss": "BCEWithLogitsLoss",
     "metrics": [
-        "accuracy", "top_k_acc"
+        "accuracy"
     ],
     "lr_scheduler": {
         "type": "StepLR",

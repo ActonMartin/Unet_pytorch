@@ -1,6 +1,7 @@
 import argparse
 import collections
 import torch
+import torch.nn as nn
 import numpy as np
 import data_loader.data_loaders as module_data
 import model.loss as module_loss
@@ -16,6 +17,7 @@ torch.manual_seed(SEED)
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = False
 np.random.seed(SEED)
+
 
 def main(config):
     logger = config.get_logger('train')
