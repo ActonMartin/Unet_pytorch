@@ -1,5 +1,5 @@
 {
-    "name": "Mnist_LeNet",
+    "name": "U-Net",
     "n_gpu": 0,
 
     "arch": {
